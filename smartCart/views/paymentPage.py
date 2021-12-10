@@ -1,18 +1,9 @@
 import tkinter as tk
-from tkinter import ANCHOR
-from tkinter.messagebox import showinfo
-
-import firebase as firebase
 import firebase_admin
-from firebase_admin import credentials
-from numpy.core import double
-from pyasn1.compat.octets import null
-from pyrebase import pyrebase
-from firebase_admin import db
-import geocoder
 
-from views.CreditCardPage import *
-from views.shoppingPage import *
+from firebase_admin import db
+
+from smartCart.views.CreditCardPage import CreditCardPage
 
 
 class PaymentPage(tk.Tk):
@@ -39,12 +30,15 @@ class PaymentPage(tk.Tk):
 
     def __init__(self,listItem,priceItem,totalPrice,itemCodesList):
         tk.Tk.__init__(self)
-        self.geometry('500x500')
+        self.geometry('650x450')
+        self.configure(background="#353839")
+        font_label = ("Comic Sans MS", 18, "bold")
         self.listItems = listItem
         self.priceItems = priceItem
         self.totalPrice = totalPrice
         self.itemCodesList = itemCodesList
-        self.btnCredit = tk.Button(text="Credit Card", command = lambda : self.goToCredit()).grid()
+        self.optlbl = tk.Label(text="Select your Payment Option", font=font_label).place(x=150, y=200)
+        self.btnCredit = tk.Button(text="Credit Card", background = "#a1caf1", command = lambda : self.goToCredit()).place(x=300, y=400)
 
 
 
